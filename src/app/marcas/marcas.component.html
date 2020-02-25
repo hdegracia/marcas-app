@@ -27,11 +27,11 @@
       <tbody>
         <tr *ngFor="let marcas of marcas">
           <td><img (click)="abrirModal(marcas)" *ngIf="marcas?.foto"
-            src="http://midata24.com/spring-boot-backend-electronic.apirest-0.0.1/api/uploads/img/{{marcas.foto}}" alt="{{marcas.foto}}" class="img-thumbnail rounded"
+            src="https://midata24.com/spring-boot-backend-electronic.apirest-0.0.1/api/uploads/img/{{marcas.foto}}" alt="{{marcas.foto}}" class="img-thumbnail rounded"
             style="width:64px; cursor: pointer;">
 
             <img (click)="abrirModal(marcas)" *ngIf="!marcas?.foto"
-              src="http://midata24.com/spring-boot-backend-electronic.apirest-0.0.1/images/no-usuario.png" alt="Sin foto" class="img-thumbnail rounded"
+              src="https://midata24.com/spring-boot-backend-electronic.apirest-0.0.1/images/no-usuario.png" alt="Sin foto" class="img-thumbnail rounded"
               style="width:64px; cursor: pointer;">
             </td>
           <td>{{ marcas.id }}</td>
