@@ -1,0 +1,52 @@
+<app-detalle *ngIf="marcaSeleccionada" [marcas] ="marcaSeleccionada"></app-detalle>
+
+<div class="card border-primary mb-3">
+  <div class="card-header">Marcas</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de Marcas</h5>
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/marcas/form']">
+        Crear Marca
+      </button>
+    </div>
+    <div *ngIf="marcas?.length == 0" class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+    <table class="table table-bordered table-striped" *ngIf="marcas?.length>0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>id</th>
+          <th>nombre</th>
+          <th>numero Serie</th>
+          <th>Fecha Regisrtro</th>
+          <th>editar</th>
+          <th>eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let marcas of marcas">
+          <td><img (click)="abrirModal(marcas)" *ngIf="marcas?.foto"
+            src="http://midata24.com/spring-boot-backend-electronic.apirest-0.0.1/api/uploads/img/{{marcas.foto}}" alt="{{marcas.foto}}" class="img-thumbnail rounded"
+            style="width:64px; cursor: pointer;">
+
+            <img (click)="abrirModal(marcas)" *ngIf="!marcas?.foto"
+              src="http://midata24.com/spring-boot-backend-electronic.apirest-0.0.1/images/no-usuario.png" alt="Sin foto" class="img-thumbnail rounded"
+              style="width:64px; cursor: pointer;">
+            </td>
+          <td>{{ marcas.id }}</td>
+          <td>{{ marcas.nombre }}</td>
+          <td>{{ marcas.numero_serie }}</td>
+          <td>{{ marcas.fecha_registro }}</td>
+          <td>
+            <button type="button" name="editar" [routerLink]="['/marcas/form', marcas.id]" class="btn btn-primary btn-sm">editar</button>
+          </td>
+          <td>
+            <button type="button" name="eliminar" (click)='delete(marcas)' class="btn btn-danger btn-sm">eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+  </div>
+</div>
